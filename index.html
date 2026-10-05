@@ -2,6 +2,8 @@
 
 <html class="scroll-smooth" lang="en">
 <head>
+<link rel="preconnect" href="https://raw.githubusercontent.com" crossorigin>
+<link rel="dns-prefetch" href="https://images.unsplash.com">
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0" name="viewport"/>
 <title id="pageTitle">Lumière • Édition Privée Wedding Invitation</title>
@@ -6812,6 +6814,48 @@ main > section:first-of-type > h2 {
 #seatRevealModal:not(.open){display:none;}
 </style>
 
+
+<!-- LUMIERE GUEST MODE: pre-paint privacy/host-control lock + UHD render polish -->
+<style id="lumiere-guest-uhd-lock">
+    html.lumiere-guest-mode #hostControlsContainer,
+    html.lumiere-guest-mode #customizerPanel,
+    html.lumiere-guest-mode #guestModal {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+    }
+    html.lumiere-guest-mode #rsvpGuestNameInput[readonly] {
+        cursor: default;
+        user-select: none;
+    }
+    html, body {
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    #momentsGalleryGrid img,
+    .gallery-editor-thumb,
+    .intro-art-image,
+    #lightboxImg {
+        image-rendering: auto;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+    }
+</style>
+<script id="lumiere-guest-prelock">
+(function () {
+    try {
+        const p = new URLSearchParams(location.search);
+        if (p.has('to') || p.has('invite')) {
+            document.documentElement.classList.add('lumiere-guest-mode');
+            window.__LUMIERE_GUEST_MODE__ = true;
+            window.__LUMIERE_GUEST_NAME__ = p.get('to') || '';
+        }
+    } catch (_) {}
+})();
+</script>
+
 </head>
 <body class="vip-royal-noir invitation-locked bg-[#FAF8F5] text-tropicalText antialiased selection:bg-customDarkRed selection:text-white">
 <!-- Full-page fixed background video -->
@@ -6835,7 +6879,7 @@ main > section:first-of-type > h2 {
 </video>
 <div class="cinematic-intro-wrap">
 <div class="intro-art-wrap">
-<img alt="Traditional wedding artwork" class="intro-art-image" src="https://raw.githubusercontent.com/lumierecompany07/backpotos/main/6.png" style="transform: translate(-50%, -50%) scale(1.4) !important; transform-origin: center center !important;">
+<img decoding="async" fetchpriority="high" alt="Traditional wedding artwork" class="intro-art-image" src="https://raw.githubusercontent.com/lumierecompany07/backpotos/main/6.png" style="transform: translate(-50%, -50%) scale(1.4) !important; transform-origin: center center !important;">
 <div class="intro-copy">
 <div class="intro-vip-badge"><i class="fa-solid fa-crown"></i><span>ÉDITION PRIVÉE</span></div>
 <p class="intro-wedding-label">The Wedding Of</p>
@@ -7121,7 +7165,7 @@ main > section:first-of-type > h2 {
 <p class="prepared-label text-[10px] sm:text-xs md:text-sm tracking-[0.2em] uppercase font-bold font-cinzel">Prepared Specially For</p>
 <p class="font-bold text-[#5C060C] text-sm sm:text-base md:text-lg font-poppins mt-1" id="dynamicGuestName" style="color:#26090B !important; -webkit-text-fill-color:#26090B !important; font-weight:800 !important; text-shadow:none !important;">Honored Family &amp; Friends</p>
 </div>
-<img id="heroOpeningArtwork" alt="Wedding decorative artwork" class="mt-3 w-[60%] max-w-[260px] h-auto object-contain mx-auto drop-shadow-lg" loading="eager" src="https://raw.githubusercontent.com/lumierecompany07/backpotos/main/10.png"/>
+<img id="heroOpeningArtwork" alt="Wedding decorative artwork" class="mt-3 w-[60%] max-w-[260px] h-auto object-contain mx-auto drop-shadow-lg" loading="eager" decoding="async" fetchpriority="high" src="https://raw.githubusercontent.com/lumierecompany07/backpotos/main/10.png"/>
 </div>
 </div>
 <div aria-hidden="true" class="w-full pb-6 sm:pb-8"></div>
@@ -7223,7 +7267,7 @@ main > section:first-of-type > h2 {
 <!-- SPECIAL NOTE SECTION -->
 <section id="togetherForeverSection" class="p-4 sm:p-6 text-center relative overflow-hidden max-w-xl mx-auto" data-aos="fade-up" data-aos-duration="900" data-aos-delay="0">
 <div class="flex justify-center mb-4 sm:mb-5">
-<img alt="Decorative wedding motif" class="w-[60%] max-w-[220px] sm:max-w-[260px] h-auto object-contain mx-auto drop-shadow-lg" src="https://raw.githubusercontent.com/lumierecompany07/backpotos/main/9.png"/>
+<img loading="lazy" decoding="async" alt="Decorative wedding motif" class="w-[60%] max-w-[220px] sm:max-w-[260px] h-auto object-contain mx-auto drop-shadow-lg" src="https://raw.githubusercontent.com/lumierecompany07/backpotos/main/9.png"/>
 </div>
 <p class="text-[9px] sm:text-[10px] uppercase tracking-[0.25em] text-[#5C060C] font-bold mb-1.5 font-cinzel animate-text-shimmer">A Note From Us</p>
 <h2 class="font-cinzel text-lg sm:text-xl font-bold text-tropicalText mb-3 phase-anim-family" style="font-family: 'Cinzel', serif !important; font-style: normal !important; font-weight: 700 !important; letter-spacing: .025em !important;">Together Forever</h2>
@@ -7390,7 +7434,7 @@ main > section:first-of-type > h2 {
 <div class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden items-center justify-center p-4" id="lightboxModal" onclick="closeLightbox()">
 <div class="relative max-w-4xl w-full max-h-[90vh] flex items-center justify-center" onclick="event.stopPropagation()">
 <button class="absolute -top-10 right-0 text-white text-2xl font-bold p-2 cursor-pointer" onclick="closeLightbox()">×</button>
-<img alt="Zoomed Photo" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl kandyan-border animate-fade-scale" id="lightboxImg" src=""/>
+<img alt="Zoomed Photo" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl kandyan-border animate-fade-scale" id="lightboxImg"/>
 </div>
 </div>
 <footer class="save-date-footer text-center relative z-20">
@@ -7586,15 +7630,100 @@ main > section:first-of-type > h2 {
         // GPU-light build: continuous floating particles disabled.
         // Default itinerary is rendered after DEFAULT_ITINERARY is initialized below.
 
+        function isLumiereGuestMode() {
+            if (window.__LUMIERE_GUEST_MODE__) return true;
+            try {
+                const params = new URLSearchParams(window.location.search);
+                return params.has('to') || params.has('invite');
+            } catch (_) {
+                return false;
+            }
+        }
+
+        function getLumiereGuestName() {
+            if (window.__LUMIERE_GUEST_NAME__) return String(window.__LUMIERE_GUEST_NAME__);
+            try {
+                return new URLSearchParams(window.location.search).get('to') || '';
+            } catch (_) {
+                return '';
+            }
+        }
+
+        function enforceGuestModeUi(guestName = getLumiereGuestName()) {
+            if (!isLumiereGuestMode()) return;
+
+            window.__LUMIERE_GUEST_MODE__ = true;
+            if (guestName) window.__LUMIERE_GUEST_NAME__ = guestName;
+            document.documentElement.classList.add('lumiere-guest-mode');
+
+            const hostControls = document.getElementById('hostControlsContainer');
+            if (hostControls) {
+                hostControls.style.setProperty('display', 'none', 'important');
+                hostControls.setAttribute('aria-hidden', 'true');
+                hostControls.inert = true;
+            }
+
+            const customizer = document.getElementById('customizerPanel');
+            if (customizer) {
+                customizer.style.setProperty('display', 'none', 'important');
+                customizer.setAttribute('aria-hidden', 'true');
+                customizer.inert = true;
+            }
+
+            const guestModal = document.getElementById('guestModal');
+            if (guestModal) {
+                guestModal.classList.remove('flex');
+                guestModal.classList.add('hidden');
+                guestModal.style.setProperty('display', 'none', 'important');
+                guestModal.setAttribute('aria-hidden', 'true');
+                guestModal.inert = true;
+            }
+
+            if (guestName) {
+                ['introGuestName', 'dynamicGuestName', 'popupSeatGuest'].forEach((id) => {
+                    const el = document.getElementById(id);
+                    if (el) el.textContent = guestName;
+                });
+
+                if (typeof templateVariables !== 'undefined' && templateVariables) {
+                    templateVariables.seatingGuest = guestName;
+                }
+
+                const seatingInput = document.getElementById('inpSeatingGuest');
+                if (seatingInput) seatingInput.value = guestName;
+
+                const rsvpNameInput = document.getElementById('rsvpGuestNameInput');
+                if (rsvpNameInput) {
+                    rsvpNameInput.value = guestName;
+                    rsvpNameInput.readOnly = true;
+                    rsvpNameInput.setAttribute('aria-readonly', 'true');
+                    rsvpNameInput.setAttribute('tabindex', '-1');
+                }
+            }
+
+            if (typeof renderSeatLoadingSystem === 'function') {
+                try { renderSeatLoadingSystem(); } catch (_) {}
+            }
+        }
+
         function toggleCustomizer() {
+            if (isLumiereGuestMode()) {
+                enforceGuestModeUi();
+                return;
+            }
             const panel = document.getElementById('customizerPanel');
             if (!panel) return;
             const opening = panel.classList.contains('translate-x-full');
             if (opening && typeof syncCustomizerFromVariables === 'function') syncCustomizerFromVariables();
             panel.classList.toggle('translate-x-full');
+            if(opening)panel.querySelectorAll('img[data-src]').forEach(img=>{img.src=img.dataset.src;img.removeAttribute('data-src')});
         }
 
         function openGuestModal() {
+            if (isLumiereGuestMode()) {
+                enforceGuestModeUi();
+                return;
+            }
             document.getElementById('guestModal').classList.remove('hidden');
             document.getElementById('guestModal').classList.add('flex');
         }
@@ -7604,13 +7733,91 @@ main > section:first-of-type > h2 {
             document.getElementById('guestModal').classList.add('hidden');
         }
 
-        function generateGuestLink() {
-            const name = document.getElementById('guestNameInput').value.trim();
-            if(!name) return;
-            const baseUrl = window.location.href.split('?')[0];
-            const link = `${baseUrl}?to=${encodeURIComponent(name)}`;
-            document.getElementById('generatedLinkOutput').value = link;
-            document.getElementById('resultContainer').classList.remove('hidden');
+        function bytesToBase64Url(bytes) {
+            let binary = '';
+            const chunk = 0x8000;
+            for (let i = 0; i < bytes.length; i += chunk) {
+                binary += String.fromCharCode(...bytes.subarray(i, i + chunk));
+            }
+            return btoa(binary).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/g, '');
+        }
+
+        function base64UrlToBytes(value) {
+            const base64 = String(value || '').replace(/-/g, '+').replace(/_/g, '/');
+            const padded = base64 + '='.repeat((4 - base64.length % 4) % 4);
+            const binary = atob(padded);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+            return bytes;
+        }
+
+        async function encodeGuestSnapshot(data) {
+            const raw = new TextEncoder().encode(JSON.stringify(data || {}));
+            if (typeof CompressionStream === 'function') {
+                try {
+                    const stream = new Blob([raw]).stream().pipeThrough(new CompressionStream('gzip'));
+                    const compressed = new Uint8Array(await new Response(stream).arrayBuffer());
+                    return `z.${bytesToBase64Url(compressed)}`;
+                } catch (_) {}
+            }
+            return `j.${bytesToBase64Url(raw)}`;
+        }
+
+        async function decodeGuestSnapshot(value) {
+            if (!value) return null;
+            try {
+                const packed = String(value);
+                const mode = packed.slice(0, 2);
+                let bytes = base64UrlToBytes(packed.slice(2));
+                if (mode === 'z.' && typeof DecompressionStream === 'function') {
+                    const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+                    bytes = new Uint8Array(await new Response(stream).arrayBuffer());
+                } else if (mode !== 'j.') {
+                    return null;
+                }
+                return JSON.parse(new TextDecoder().decode(bytes));
+            } catch (_) {
+                return null;
+            }
+        }
+
+        async function generateGuestLink() {
+            if (isLumiereGuestMode()) {
+                enforceGuestModeUi();
+                return;
+            }
+
+            const nameInput = document.getElementById('guestNameInput');
+            const name = nameInput ? nameInput.value.trim() : '';
+            if (!name) return;
+
+            // Capture the CURRENT edited invitation before creating the guest link.
+            if (typeof applyWeddingDetailsFromCustomizer === 'function') {
+                try { applyWeddingDetailsFromCustomizer(); } catch (_) {}
+            }
+
+            const snapshot = (typeof getTemplateVariablePayload === 'function')
+                ? getTemplateVariablePayload()
+                : {};
+
+            snapshot.guest = name;
+            snapshot.seatingGuest = name;
+            snapshot.hideHostControls = true;
+            snapshot.guestMode = true;
+            snapshot.snapshotVersion = 2;
+
+            const packed = await encodeGuestSnapshot(snapshot);
+            const url = new URL(window.location.href);
+            url.search = '';
+            url.hash = '';
+            url.searchParams.set('to', name);
+            url.searchParams.set('invite', packed);
+
+            const output = document.getElementById('generatedLinkOutput');
+            if (output) output.value = url.toString();
+
+            const result = document.getElementById('resultContainer');
+            if (result) result.classList.remove('hidden');
         }
 
         function copyGuestLink() {
@@ -7622,19 +7829,35 @@ main > section:first-of-type > h2 {
             setTimeout(() => msg.classList.add('hidden'), 2000);
         }
 
-        // Parse URL params on load
-        window.addEventListener('DOMContentLoaded', () => {
+        // Parse guest link + restore the exact saved invitation snapshot.
+        window.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);
-            const guest = params.get('to');
-            if(guest) {
-                const decodedGuest = decodeURIComponent(guest);
-                document.getElementById('introGuestName').innerText = decodedGuest;
-                document.getElementById('dynamicGuestName').innerText = decodedGuest;
-                const rsvpNameInput = document.getElementById('rsvpGuestNameInput');
-                if (rsvpNameInput) rsvpNameInput.value = decodedGuest;
-                const hc = document.getElementById('hostControlsContainer');
-                if (hc) hc.style.display = 'none';
+            const guest = params.get('to') || '';
+            const packedSnapshot = params.get('invite') || '';
+
+            if (guest || packedSnapshot) {
+                window.__LUMIERE_GUEST_MODE__ = true;
+                window.__LUMIERE_GUEST_NAME__ = guest;
+                document.documentElement.classList.add('lumiere-guest-mode');
+
+                const snapshot = packedSnapshot ? await decodeGuestSnapshot(packedSnapshot) : null;
+                const finalGuest = guest || (snapshot && snapshot.guest) || '';
+
+                if (finalGuest) window.__LUMIERE_GUEST_NAME__ = finalGuest;
+
+                if (snapshot && typeof applyLiveDataFromDashboard === 'function') {
+                    applyLiveDataFromDashboard({
+                        ...snapshot,
+                        guest: finalGuest || snapshot.guest,
+                        seatingGuest: finalGuest || snapshot.seatingGuest,
+                        hideHostControls: true,
+                        guestMode: true
+                    });
+                }
+
+                enforceGuestModeUi(finalGuest);
             }
+
             const rsvpName = document.getElementById('rsvpGuestNameInput');
             if (rsvpName) {
                 rsvpName.addEventListener('input', () => {
@@ -7646,6 +7869,8 @@ main > section:first-of-type > h2 {
             restoreSeatRsvpState();
             syncSeatManagerFields();
             renderSeatLoadingSystem();
+
+            if (isLumiereGuestMode()) enforceGuestModeUi(getLumiereGuestName());
         });
 
         function openLightbox(imgId) {
@@ -8328,6 +8553,27 @@ main > section:first-of-type > h2 {
             if (window.AOS) setTimeout(() => AOS.refreshHard(), 20);
         }
 
+        function getUhdImageSource(src) {
+            const value = String(src || '');
+            if (!value) return value;
+
+            try {
+                const url = new URL(value, window.location.href);
+                if (url.hostname === 'images.unsplash.com') {
+                    const dpr = Math.max(1, Math.min(3, window.devicePixelRatio || 1));
+                    const viewport = Math.max(window.innerWidth || 0, window.innerHeight || 0, 1080);
+                    const targetWidth = Math.min(2560, Math.max(1600, Math.ceil(viewport * dpr * 1.15)));
+                    url.searchParams.set('auto', 'format');
+                    url.searchParams.set('fit', 'crop');
+                    url.searchParams.set('w', String(targetWidth));
+                    url.searchParams.set('q', '92');
+                    return url.toString();
+                }
+            } catch (_) {}
+
+            return value;
+        }
+
         let momentsSlideshowTimers = [];
         let momentsSlideshowRunId = 0;
 
@@ -8473,10 +8719,13 @@ main > section:first-of-type > h2 {
 
             if (section) section.classList.remove('hidden');
 
+            // Keep state untouched, but request/render the sharpest practical source per device.
+            const displayList = list.map(getUhdImageSource);
+
             // Keep the premium composition compact: maximum five visible slots.
             // Any additional photos become part of the looping slideshow.
-            const slotCount = Math.min(5, list.length);
-            const visibleSlots = Array.from({ length: slotCount }, (_, index) => list[index]);
+            const slotCount = Math.min(5, displayList.length);
+            const visibleSlots = Array.from({ length: slotCount }, (_, index) => displayList[index]);
 
             grid.innerHTML = visibleSlots.map((src, index) => `
                 <div
@@ -8496,7 +8745,7 @@ main > section:first-of-type > h2 {
                 </div>
             `).join('');
 
-            startMomentsSlideshow(list, slotCount);
+            startMomentsSlideshow(displayList, slotCount);
 
             if (window.AOS) setTimeout(() => AOS.refreshHard(), 20);
         }
@@ -8555,7 +8804,7 @@ main > section:first-of-type > h2 {
                         <button type="button" class="customizer-delete" onclick="deleteGalleryPhoto(${index})"><i class="fa-solid fa-trash"></i> Delete</button>
                     </div>
                     <div class="gallery-editor-row">
-                        <img class="gallery-editor-thumb" src="${escapeHtml(src)}" alt="Photo ${index + 1} preview">
+                        <img class="gallery-editor-thumb" decoding="async" loading="lazy" fetchpriority="low" ${document.getElementById('customizerPanel')?.classList.contains('translate-x-full') ? 'data-src' : 'src'}="${escapeHtml(src)}" alt="Photo ${index + 1} preview">
                         <div>
                             <label class="gallery-file-label"><i class="fa-solid fa-folder-open"></i> Browse / Replace from Device
                                 <input type="file" accept="image/*" class="hidden" onchange="replaceGalleryPhoto(${index}, this.files[0]); this.value=''">
@@ -8602,7 +8851,7 @@ main > section:first-of-type > h2 {
                 const image = new Image();
                 image.onload = () => {
                     try {
-                        const maxSide = 1800;
+                        const maxSide = 2560;
                         const naturalW = image.naturalWidth || image.width;
                         const naturalH = image.naturalHeight || image.height;
                         const scale = Math.min(1, maxSide / Math.max(naturalW, naturalH));
@@ -8617,7 +8866,7 @@ main > section:first-of-type > h2 {
                         ctx.imageSmoothingQuality = 'high';
                         ctx.drawImage(image, 0, 0, width, height);
                         // WebP keeps quality high while reducing large phone-photo payloads.
-                        const optimized = canvas.toDataURL('image/webp', .84);
+                        const optimized = canvas.toDataURL('image/webp', .92);
                         resolve(optimized && optimized.length > 30 ? optimized : original);
                     } catch (err) {
                         resolve(original);
@@ -8862,6 +9111,18 @@ main > section:first-of-type > h2 {
 
         function applyLiveDataFromDashboard(data) {
             if (!data || typeof data !== 'object') return;
+
+            if (typeof isLumiereGuestMode === 'function' && isLumiereGuestMode()) {
+                const lockedGuest = getLumiereGuestName();
+                data = {
+                    ...data,
+                    guest: lockedGuest || data.guest,
+                    seatingGuest: lockedGuest || data.seatingGuest,
+                    hideHostControls: true,
+                    guestMode: true
+                };
+            }
+
             const setText = (id, val) => {
                 const el = document.getElementById(id);
                 if (el && val !== undefined && val !== null) el.innerText = val;
@@ -8928,6 +9189,9 @@ main > section:first-of-type > h2 {
                 }
             }
             renderSeatLoadingSystem();
+            if (typeof isLumiereGuestMode === 'function' && isLumiereGuestMode()) {
+                enforceGuestModeUi(getLumiereGuestName() || data.guest || '');
+            }
         }
 
         function applyWeddingDetailsToPageFromState() {
@@ -8941,6 +9205,10 @@ main > section:first-of-type > h2 {
         }
 
         function applyCustomizations() {
+            if (typeof isLumiereGuestMode === 'function' && isLumiereGuestMode()) {
+                enforceGuestModeUi();
+                return;
+            }
             applyWeddingDetailsFromCustomizer();
             renderLoveStory(templateVariables.story);
             renderMomentsGallery(templateVariables.gallery);
